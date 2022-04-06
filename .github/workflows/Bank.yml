@@ -11,7 +11,7 @@ jobs:
 
       - name: building
         run: |
-          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF --build _build ..
+          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF --build _build 
           make 
           cd _build && ctest
 
