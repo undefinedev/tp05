@@ -31,7 +31,7 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DCOVERAGE=ON ..
+          cmake -DBUILD_TESTS=OFF -DCOVERAGE=ON ..
           make --coverage
 
       - name: Publish to coveralls.io
