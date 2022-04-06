@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir build && cd build
           cmake -DBUILD_TESTS=OFF -DCOVERALLS=ON ..
-          make --coverage
+          make 
 
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master
