@@ -17,6 +17,7 @@ if(BUILD_TESTS)
     add_executable(bank_test ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
     target_link_libraries(bank_test account transaction GTest::gtest_main GTest::gmock_main)
     enable_testing()
+    include(GoogleTest)
 endif()
 
 if (COVERAGE)
