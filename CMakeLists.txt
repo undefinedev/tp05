@@ -30,6 +30,4 @@ endif()
 
 if (COVERALLS)
     include(Coveralls)
-    coveralls_setup("${COVERAGE_SRCS}" ON "${PROJECT_SOURCE_DIR}")
-
 endif()
