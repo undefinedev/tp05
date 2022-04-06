@@ -1,0 +1,41 @@
+name: Bank
+on: [push]
+jobs:
+  BankBuildTest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: building
+        run: |
+          mkdir build && cd build
+          cmake -DBUILD_TESTS=ON ..
+          make --target bank_test
+
+      - name: test
+        run: |
+          cd build
+          ctest
+
+  Coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Publish to coveralls.io
+        uses: coverallsapp/github-action@v1.1.3
+        with:
+          github-token: ${{ github.token }}
+
+
+
+
+
+
+          
