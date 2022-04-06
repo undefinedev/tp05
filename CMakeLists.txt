@@ -29,6 +29,6 @@ if(BUILD_TESTS)
 endif()
 
 if (COVERALLS)
-    add_executable(bank_coverage ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
-    target_link_libraries(bank_coverage account transaction)
+    target_compile_options(bank_test PRIVATE --coverage)
+    target_link_libraries(bank_test --coverage)
 endif()
