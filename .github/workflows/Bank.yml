@@ -28,6 +28,12 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: building
+        run: |
+          mkdir build && cd build
+          cmake -DCOVERAGE=ON ..
+          make --coverage
+
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master
         with:
