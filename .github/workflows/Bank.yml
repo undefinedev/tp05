@@ -11,9 +11,9 @@ jobs:
 
       - name: building
         run: |
-          mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF ..
+          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF --build _build ..
           make 
+          cd _build && ctest
 
       - name: test
         run: |
