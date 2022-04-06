@@ -30,7 +30,6 @@ endif()
 
 if (COVERALLS)
     include(Coveralls)
-    coveralls_turn_on_coverage()
-    coveralls_setup(${COVERAGE_SRCS}/banking ON ${PROJECT_SOURCE_DIR}/CMakeModules/)
+    coveralls_setup("${COVERAGE_SRCS}" ON "${PROJECT_SOURCE_DIR}")
 
 endif()
