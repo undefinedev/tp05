@@ -12,7 +12,7 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF ..
+          cmake -DBUILD_TESTS=ON -DCOVERALLS=OFF ..
           make 
           ctest
 
@@ -32,7 +32,7 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=OFF -DCOVERAGE=ON ..
+          cmake -DBUILD_TESTS=OFF -DCOVERALLS=ON ..
           make --coverage
 
       - name: Publish to coveralls.io
