@@ -11,14 +11,15 @@ jobs:
 
       - name: building
         run: |
-          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF --build _build 
+          mkdir build && cd build
+          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF ..
           make 
-          cd _build && ctest
-
-      - name: test
-        run: |
-          cd build
           ctest
+
+      #- name: test
+      #  run: |
+      #    cd build
+      #    ctest
 
   Coverage:
     runs-on: ubuntu-latest
