@@ -12,8 +12,8 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON ..
-          make --target bank_test
+          cmake -DBUILD_TESTS=ON -DCOVERAGE=OFF ..
+          make 
 
       - name: test
         run: |
