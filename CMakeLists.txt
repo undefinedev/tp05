@@ -29,5 +29,6 @@ if(BUILD_TESTS)
 endif()
 
 if (COVERALLS)
-    include(Coveralls)
+    target_compile_options(bank_test PRIVATE --coverage)
+    target_link_libraries(bank_test --coverage)
 endif()
