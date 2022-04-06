@@ -25,6 +25,7 @@ if(BUILD_TESTS)
     target_link_libraries(bank_test account transaction gtest_main gmock_main)
     enable_testing()
     include(GoogleTest)
+    gtest_discover_tests(bank_test)
 endif()
 
 if (COVERAGE)
