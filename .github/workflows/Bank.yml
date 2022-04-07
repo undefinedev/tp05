@@ -20,8 +20,12 @@ jobs:
           cd build
           ctest
 
-      - name: Coveralls
-        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
+      - name: coverage
+        run: |
+          lcov --coverage --directory banking tests  --output-file ./coverage/lcov.info
+
+      #- name: Coveralls
+      #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
 
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master

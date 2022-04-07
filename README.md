@@ -1,3 +1,2 @@
 [![Build and Test](https://github.com/undefinedev/tp05/actions/workflows/Bank.yml/badge.svg)](https://github.com/undefinedev/tp05/actions/workflows/Bank.yml)
-[![Coverage](https://github.com/undefinedev/tp05/actions/workflows/Coverage.yml/badge.svg)](https://github.com/undefinedev/tp05/actions/workflows/Coverage.yml)
 [![Coverage Status](https://coveralls.io/repos/github/undefinedev/tp05/badge.svg?t=C75sQK)](https://coveralls.io/github/undefinedev/tp05)
