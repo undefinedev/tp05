@@ -73,5 +73,4 @@ TEST(BankTest, Bank) {
 
     res = test.Make(t1, t2, 150);
     EXPECT_EQ(res, 0);
-
 }
