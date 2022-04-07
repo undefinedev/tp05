@@ -37,18 +37,19 @@ TEST(BankTest, Bank) {
             .WillOnce(testing::Return(250))
             .WillOnce(testing::Return(250));
     EXPECT_CALL(t1, ChangeBalance(-151))
-            .Times(1);
+            .WillOnce(testing::Invoke(nullptr));
     EXPECT_CALL(t2, ChangeBalance(testing::_))
             .Times(3);
     EXPECT_CALL(t1, Lock())
             .Times(5)
             .WillOnce(testing::Throw(std::runtime_error("at first lock the account")))
-            .WillOnce(nullptr)
+            .WillOnce(testing::Invoke(nullptr))
             .WillOnce(testing::Throw(std::runtime_error("already locked")))
             .WillOnce(nullptr)
             .WillOnce(nullptr);
     EXPECT_CALL(t2, Lock())
-            .Times(2);
+            .WillOnce(nullptr)
+            .WillOnce(testing::Invoke(nullptr));
     EXPECT_CALL(t1, Unlock())
             .Times(3);
     EXPECT_CALL(t2, Unlock())
