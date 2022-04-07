@@ -26,7 +26,7 @@ jobs:
 
       - name: coverage
         run: |
-          mkdir .coverage
+          mkdir coverage
           lcov -d . -t bank_test -o .coverage/lcov.info  -b . -c --no-external
           lcov --remove .coverage/lcov.info '*/gmock/*' '*/gtest/*' '*/include/*' -o .coverage/lcov.info
 
