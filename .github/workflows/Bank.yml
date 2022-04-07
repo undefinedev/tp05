@@ -26,6 +26,7 @@ jobs:
 
       - name: coverage
         run: |
+          cd build
           lcov --capture --directory . --output-file lcov.info --test-name bank_test --no-external
 
       #- name: Coveralls
@@ -34,4 +35,5 @@ jobs:
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master
         with:
+          path-to-lcov: ./build/lcov.info
           github-token: ${{ github.token }}
