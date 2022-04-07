@@ -16,7 +16,7 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERALLS=ON –fprofile-arcs –ftest-coverage ..
+          cmake -DBUILD_TESTS=ON -DCOVERALLS=ON ..
           make
 
       - name: test
@@ -26,7 +26,7 @@ jobs:
 
       - name: coverage
         run: |
-          lcov -t "result" -o -c -d .
+          lcov --capture --directory . --output-file ./coverage/lcov.info --test-name bank_test --no-external
 
       #- name: Coveralls
       #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
