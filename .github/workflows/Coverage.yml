@@ -1,7 +1,7 @@
 name: BuildTest
 on: [push]
 jobs:
-  BuildTest:
+  Coverage:
     runs-on: ubuntu-latest
     timeout-minutes: 3
 
@@ -12,13 +12,8 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERALLS=ON ..
-          make
-
-      - name: test
-        run: |
-          cd build
-          ctest
+          cmake -DBUILD_TESTS=OFF -DCOVERALLS=ON ..
+          make 
 
       - name: Coveralls
         run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
@@ -27,3 +22,5 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ github.token }}
+
+
