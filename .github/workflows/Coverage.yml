@@ -1,4 +1,4 @@
-name: BuildTest
+name: Coverage
 on: [push]
 jobs:
   Coverage:
@@ -16,7 +16,7 @@ jobs:
           make 
 
       - name: Coveralls
-        run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
+        run: coveralls -t ${{ secrets.coveralls_token }}
 
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master

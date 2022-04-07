@@ -1,4 +1,4 @@
-name: BuildTest
+name: Bank
 on: [push]
 jobs:
   BuildTest:
