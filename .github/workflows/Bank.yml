@@ -16,7 +16,7 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERALLS=1 ..
+          cmake -DBUILD_TESTS=ON -DCOVERALLS=ON ..
           make
 
       - name: test
@@ -26,7 +26,8 @@ jobs:
 
       - name: coverage
         run: |
-          lcov --capture --directory . --output-file lcov.info --test-name bank_test --no-external
+          lcov -d . -t bank_test -o .coverage/lcov.info  -b . -c --no-external
+          lcov --remove .coverage/lcov.info '*/gmock/*' '*/gtest/*' '*/include/*' -o .coverage/lcov.info
 
       #- name: Coveralls
       #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
@@ -34,5 +35,4 @@ jobs:
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master
         with:
-          path-to-lcov: ./build/lcov.info
           github-token: ${{ github.token }}
