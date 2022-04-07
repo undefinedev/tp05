@@ -43,13 +43,12 @@ TEST(BankTest, Bank) {
     EXPECT_CALL(t1, Lock())
             .Times(5)
             .WillOnce(testing::Throw(std::runtime_error("at first lock the account")))
-            .WillOnce(testing::Invoke(nullptr))
+            .WillOnce(nullptr)
             .WillOnce(testing::Throw(std::runtime_error("already locked")))
             .WillOnce(nullptr)
             .WillOnce(nullptr);
     EXPECT_CALL(t2, Lock())
-            .WillOnce(nullptr)
-            .WillOnce(testing::Invoke(nullptr));
+            .Times(2);
     EXPECT_CALL(t1, Unlock())
             .Times(3);
     EXPECT_CALL(t2, Unlock())
@@ -74,4 +73,15 @@ TEST(BankTest, Bank) {
 
     res = test.Make(t1, t2, 150);
     EXPECT_EQ(res, 0);
+}
+
+TEST(BankTest, Account) {
+    Account t1(1, 500);
+
+    EXPECT_EQ(t1.GetBalance(), 500);
+    EXPECT_THROW(t1.ChangeBalance(-100), std::runtime_error);
+    t1.Lock();
+    t1.ChangeBalance(-100);
+    EXPECT_EQ(t1.GetBalance(), 400);
+    t1.Unlock();
 }
