@@ -1,5 +1,5 @@
 name: Bank
-on: [push]
+on: [ push ]
 jobs:
   BuildTest:
     runs-on: ubuntu-latest
@@ -29,9 +29,6 @@ jobs:
           mkdir coverage
           lcov -d . -t bank_test -o coverage/lcov.info  -b . -c --no-external
           lcov --remove coverage/lcov.info '*/gmock/*' '*/gtest/*' '*/include/*' -o coverage/lcov.info
-
-      #- name: Coveralls
-      #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
 
       - name: Publish to coveralls.io
         uses: coverallsapp/github-action@master

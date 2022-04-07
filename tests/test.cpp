@@ -1,10 +1,9 @@
 // Copyright 2022 undefinedev Timofeev Vladislav
 
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
-
 #include <Account.h>
 #include <Transaction.h>
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
 
 using ::testing::Return;
 
@@ -17,12 +16,6 @@ public:
     MOCK_METHOD(void, Lock, (), (override));
     MOCK_METHOD(void, Unlock, (), (override));
 };
-
-//class MockTransaction : public Transaction {
-//    MockTransaction() : Transaction() {};
-//
-//    MOCK_METHOD(bool, Make, (Account& from, Account& to, int sum));
-//};
 
 TEST(BankTest, Bank) {
     MockAccount t1(1, 220);
