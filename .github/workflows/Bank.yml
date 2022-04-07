@@ -26,7 +26,7 @@ jobs:
 
       - name: coverage
         run: |
-          lcov -t "result" -o ./coverage/lcov.info -c -d .
+          lcov -t "result" -o -c -d .
 
       #- name: Coveralls
       #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
