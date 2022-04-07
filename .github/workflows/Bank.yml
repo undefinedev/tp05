@@ -21,12 +21,11 @@ jobs:
 
       - name: test
         run: |
-          cd build
           ctest
 
       - name: coverage
         run: |
-          cd build
+          cd ..
           lcov --capture --directory . --output-file lcov.info --test-name bank_test --no-external
 
       #- name: Coveralls
