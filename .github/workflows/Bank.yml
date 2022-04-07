@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v3
+        run: |
+          sudo apt-get install lcov
 
       - name: building
         run: |
@@ -22,7 +24,7 @@ jobs:
 
       - name: coverage
         run: |
-          lcov --coverage --directory banking tests  --output-file ./coverage/lcov.info
+          lcov --coverage --directory ./banking ./tests  --output-file ./coverage/lcov.info
 
       #- name: Coveralls
       #  run: coveralls -t ${{ secrets.coveralls_token }} --root . -E ".*external.*" -E ".*tests.*"
