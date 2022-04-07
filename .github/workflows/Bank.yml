@@ -16,16 +16,16 @@ jobs:
       - name: building
         run: |
           mkdir build && cd build
-          cmake -DBUILD_TESTS=ON -DCOVERALLS=ON ..
+          cmake -DBUILD_TESTS=ON -DCOVERALLS=1 ..
           make
 
       - name: test
         run: |
+          cd build
           ctest
 
       - name: coverage
         run: |
-          cd ..
           lcov --capture --directory . --output-file lcov.info --test-name bank_test --no-external
 
       #- name: Coveralls
